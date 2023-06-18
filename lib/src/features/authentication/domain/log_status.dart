@@ -1,0 +1,4 @@
+enum LogStatus {
+  loggedIn,
+  loggedOut,
+}
