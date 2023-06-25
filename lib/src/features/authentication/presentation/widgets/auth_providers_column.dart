@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../login_bloc.dart';
+import '../auth_bloc.dart';
 import 'widgets.dart';
 
 class AuthProvidersColumn extends StatelessWidget {
@@ -9,7 +9,7 @@ class AuthProvidersColumn extends StatelessWidget {
     required this.bloc,
   });
 
-  final LoginBloc bloc;
+  final AuthBloc bloc;
 
   @override
   Widget build(BuildContext context) {

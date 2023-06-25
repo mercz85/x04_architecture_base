@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EmailFieldValidator {
   static String? validate(String value) {
@@ -17,7 +18,10 @@ class EmailTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       key: key,
-      decoration: const InputDecoration(labelText: 'Enter your email'),
+      decoration: const InputDecoration(
+        labelText: 'Enter your email',
+        icon: Icon(FontAwesomeIcons.envelope),
+      ),
       onSaved: onSaved,
       validator: (value) => EmailFieldValidator.validate(value!),
     );

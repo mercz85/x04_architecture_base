@@ -3,11 +3,28 @@ import 'dart:async';
 import '../application/auth_service.dart';
 import '../domain/domain.dart';
 
-class LoginBloc {
+class AuthBloc {
+//CONSTANTS
+  static String enterPassword = 'Enter a password';
+  static String confirmPassword = 'Confirm your password.';
+
   final _controller = StreamController<AuthUser>();
   Stream<AuthUser> get authUserStream => _controller.stream;
 
   final AuthService _authService = AuthService();
+
+  Future<void> createUserWithEmailAndPassword(
+      String email, String password) async {
+    AuthUser loggedUser = await _authService.createUserWithEmailAndPassword(
+      AuthUser(
+        logStatus: LogStatus.loggedOut,
+        authMode: AuthMode.emailAndPassword,
+        email: email,
+        password: password,
+      ),
+    );
+    _controller.add(loggedUser);
+  }
 
   Future<void> loginWithEmailAndPassword(String email, String password) async {
     AuthUser loggedUser = await _authService.logInWithEmailAndPassword(

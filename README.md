@@ -24,3 +24,6 @@ https://docs.flutter.dev/accessibility-and-localization/internationalization
 GET WIDGET SIZE
 https://stackoverflow.com/questions/49307677/how-can-i-get-the-height-of-a-widget/49650741#49650741
 https://stackoverflow.com/questions/49307677/how-can-i-get-the-height-of-a-widget/74701386#74701386
+
+KEYs
+https://betterprogramming.pub/flutter-keys-the-why-when-and-how-to-go-about-them-85f12a5a0445
