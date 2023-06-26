@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
-                        AuthProvidersColumn(bloc: bloc)
+                        AuthProvidersRow(bloc: bloc)
                       ],
                     ),
                   ),

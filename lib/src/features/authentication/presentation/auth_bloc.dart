@@ -5,8 +5,8 @@ import '../domain/domain.dart';
 
 class AuthBloc {
 //CONSTANTS
-  static String enterPassword = 'Enter a password';
-  static String confirmPassword = 'Confirm your password.';
+  static const String enterPassword = 'Enter a password.';
+  static const String confirmPassword = 'Confirm your password.';
 
   final _controller = StreamController<AuthUser>();
   Stream<AuthUser> get authUserStream => _controller.stream;

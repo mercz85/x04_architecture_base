@@ -273,7 +273,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ],
                         ),
-                        AuthProvidersColumn(bloc: bloc)
+                        AuthProvidersRow(bloc: bloc)
                       ],
                     ),
                   ),

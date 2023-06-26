@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PasswordFieldValidator {
-  // static String? validate(String value) {
-  //   return value.isEmpty ? 'Please enter a password.' : null;
-  // }
-
-  // static String? validatePasswordMatching(String value1, String? value2) {
-  //   return value1 != value2
-  //       ? 'Passwords don\'t match. Write them again.'
-  //       : null;
-  // }
-
   static String? validate(String value, String? confirmPassword) {
     String? result;
 
@@ -27,7 +17,7 @@ class PasswordFieldValidator {
   }
 }
 
-class PasswordTextFormField extends StatelessWidget {
+class PasswordTextFormField extends StatefulWidget {
   const PasswordTextFormField({
     required super.key,
     required this.text,
@@ -39,22 +29,39 @@ class PasswordTextFormField extends StatelessWidget {
   final String? Function()? getConfirmPasswordValue;
 
   @override
+  State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
+}
+
+class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
+  bool passwordObscureText = true;
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: key,
+      key: widget.key,
       decoration: InputDecoration(
-        labelText: text,
+        labelText: widget.text,
         icon: const Icon(FontAwesomeIcons.lock),
+        suffixIcon: GestureDetector(
+          child: Icon(Icons.visibility,
+              color: passwordObscureText == true ? Colors.blue : Colors.grey),
+          onTap: () {
+            setState(() {
+              passwordObscureText = passwordObscureText == true ? false : true;
+            });
+          },
+        ),
       ),
-      onSaved: onSaved,
+      onSaved: widget.onSaved,
       validator: (value) {
-        var confirmPassword =
-            getConfirmPasswordValue != null ? getConfirmPasswordValue!() : null;
+        var confirmPassword = widget.getConfirmPasswordValue != null
+            ? widget.getConfirmPasswordValue!()
+            : null;
         String? result =
             PasswordFieldValidator.validate(value!, confirmPassword);
         return result;
       },
-      obscureText: true,
+      obscureText: passwordObscureText,
     );
   }
 }
