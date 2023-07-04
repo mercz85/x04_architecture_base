@@ -1,7 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-//TODO create User model
-import 'package:x04_architecture_base/src/features/authentication/domain/auth_mode.dart';
-
+import 'auth_mode.dart';
 import 'log_status.dart';
 
 class AuthUser {

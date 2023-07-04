@@ -58,3 +58,6 @@ https://m3.material.io/theme-builder#/custom
 FLUTTER NATIVE SPLASHSCREEN
 To regenerate:
 dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+
+MULTILANGUAGE
+https://docs.flutter.dev/accessibility-and-localization/internationalization
