@@ -1,30 +1,51 @@
 import 'package:flutter/material.dart';
+import '../common/common.dart';
 import '../features/authentication/authentication.dart';
+import 'my_app_bloc.dart';
 
-//TODO 1 add bottombarnavigation
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    //TODO 1 if the user isnt logged, open register/login
-    return MaterialApp(
-      title: 'Material App',
-      home: LoginScreen(),
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyAppBase extends StatelessWidget {
-  const MyAppBase({Key? key}) : super(key: key);
+class _MyAppState extends State<MyApp> {
+  final bloc = MyAppBloc();
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Colors.blueAccent,
-      ),
-    );
+    //TODO 2 create toogle button to DARKMODE & save in sharedPrefs
+    return StreamBuilder<bool>(
+        stream: bloc.streamDark,
+        initialData: false,
+        builder: (context, snapshot) {
+          final isDark = snapshot.data!;
+          //rebuilds ThemeInheritedWidget when stream emmits value
+          return ThemeInheritedWidget(
+            isThemeDark: isDark,
+            onThemeChanged: (isDark) {
+              bloc.onThemeChanged(isDark);
+            },
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Material App',
+              theme: isDark
+                  ? AppTheme.darkTheme
+                  : AppTheme
+                      .lightTheme, //AppTheme.lightThemeFromSeed, //ThemeData.light()
+              //TODO 1 if the user isnt logged, open register/login
+              //TODO add here a inheritedWidget to know if user is logged
+              //and  set home
+              home: const LoginScreen(),
+            ),
+          );
+        });
   }
 }

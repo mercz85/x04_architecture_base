@@ -40,11 +40,15 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
     return TextFormField(
       key: widget.key,
       decoration: InputDecoration(
-        labelText: widget.text,
-        icon: const Icon(FontAwesomeIcons.lock),
+        hintText: widget.text,
+        prefixIcon: const Icon(FontAwesomeIcons.lock),
         suffixIcon: GestureDetector(
-          child: Icon(Icons.visibility,
-              color: passwordObscureText == true ? Colors.blue : Colors.grey),
+          child: Icon(
+            Icons.visibility,
+            color: passwordObscureText == true
+                ? Theme.of(context).colorScheme.onBackground
+                : Theme.of(context).colorScheme.onBackground.withOpacity(0.1),
+          ),
           onTap: () {
             setState(() {
               passwordObscureText = passwordObscureText == true ? false : true;

@@ -1,30 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppTitle extends StatelessWidget {
+  const AppTitle({super.key, required this.text});
+  final String text;
+
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    EdgeInsetsGeometry padding = EdgeInsets.fromLTRB(
+      height * 0.01, //8
+      height * 0, //20
+      height * 0.01, //8
+      height * 0.015, //12
+    );
+    double iconSize = height * 0.15; //80
+    double sizedBoxHeight = height * 0.05; //40
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
+      padding: padding,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(
-            FontAwesomeIcons.hippo,
-            color: Colors.deepPurpleAccent,
-            size: 40,
+        children: [
+          Hero(
+            tag: 'titleIcon',
+            // child: Icon(
+            //   Icons.lock,
+            //   size: iconSize, //80,
+            // ),
+            child: CircleAvatar(
+              radius: iconSize / 2 + 2,
+              backgroundColor:
+                  Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+              child: CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.background,
+                radius: iconSize / 2,
+                child: CircleAvatar(
+                  backgroundImage: const AssetImage('assets/images/sirena.png'),
+                  radius: iconSize / 2,
+                  backgroundColor: Colors.white.withOpacity(
+                      0.9), //Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
+            ),
           ),
           SizedBox(
-            width: 20,
+            height: sizedBoxHeight, //40
           ),
           Text(
-            'APP TITLE',
+            text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 40),
-            // style: Theme.of(context)
-            //     .textTheme
-            //     .headlineMedium!
-            //     .copyWith(fontSize: 28, fontWeight: FontWeight.bold),
           ),
         ],
       ),

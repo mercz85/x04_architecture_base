@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:x04_architecture_base/src/common/inherited_widgets/theme_inherited_widget.dart';
 
 import '../auth_bloc.dart';
 //import 'widgets.dart';
@@ -17,28 +18,27 @@ class AuthProvidersRow extends StatelessWidget {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
-          child: Text(
-            'Or sign in with:',
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: Divider()),
+              Text('  Or continue with  '),
+              Expanded(child: Divider()),
+            ],
           ),
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(child: Container()),
-            Expanded(
-              flex: 1,
-              child: GoogleFAB(
-                onPressed: () async => await bloc.loginWithGoogle(),
-              ),
+            GoogleFAB(
+              onPressed: () async => await bloc.loginWithGoogle(),
             ),
-            Expanded(
-              child: AppleFAB(
-                onPressed: () async => await bloc.loginWithApple(),
-              ),
+            const SizedBox(width: 12),
+            AppleFAB(
+              onPressed: () async => await bloc.loginWithApple(),
             ),
-            Expanded(child: Container()),
           ],
         ),
       ],
@@ -57,11 +57,12 @@ class GoogleFAB extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: 'googleFAB',
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.white,
       onPressed: onPressed,
       child: const Icon(
         FontAwesomeIcons.google,
-        color: Colors.white,
+        color: Colors.red,
+        size: 32,
       ),
     );
   }
@@ -76,13 +77,25 @@ class AppleFAB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ThemeInheritedWidget themeInheritedWidget =
+    //     ThemeInheritedWidget.of(context);
+    // ColorScheme colorScheme = Theme.of(context).colorScheme;
+    // Color backgroundColor = themeInheritedWidget.isThemeDark == true
+    //     ? const Color.fromARGB(255, 27, 28, 28) //Colors.white
+    //     : Colors.white; //Colors.grey[850];
+    // Color onBackgroundColor =
+    //     ThemeInheritedWidget.of(context).isThemeDark == true
+    //         ? Colors.white
+    //         : const Color.fromARGB(255, 41, 43, 43); // Colors.white;
+
     return FloatingActionButton(
       heroTag: 'appleFAB',
-      backgroundColor: Colors.grey[850],
+      backgroundColor: Colors.white, // Colors.grey[850],
       onPressed: onPressed,
       child: const Icon(
         FontAwesomeIcons.apple,
-        color: Colors.white,
+        color: Color.fromARGB(255, 41, 43, 43), // Colors.white,
+        size: 32,
       ),
     );
   }

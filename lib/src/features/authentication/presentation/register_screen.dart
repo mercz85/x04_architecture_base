@@ -209,11 +209,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 resizeToAvoidBottomInset: false,
                 body: SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppTitle(),
+                        const AppTitle(
+                          text: 'Sign up!',
+                        ),
                         Column(
                           children: [
                             Form(
@@ -227,6 +229,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     onSaved: (newValue) =>
                                         _authUser.email = newValue,
                                   ),
+                                  const SizedBox(height: 10),
                                   PasswordTextFormField(
                                     key: const Key(
                                         'passwordRegisterTextFormField'),
@@ -236,6 +239,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     },
                                     text: AuthBloc.enterPassword,
                                   ),
+                                  const SizedBox(height: 10),
                                   PasswordTextFormField(
                                     key: const Key(
                                         'confirmPasswordRegisterTextFormField'),
@@ -244,24 +248,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       return confirmPasword;
                                     },
                                   ),
+                                  const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 12.0),
+                                        vertical: 6.0),
                                     child: TextButton(
-                                      style: ButtonStyle(
-                                          elevation:
-                                              MaterialStateProperty.resolveWith(
-                                                  (states) => 4),
-                                          backgroundColor:
-                                              MaterialStateColor.resolveWith(
-                                                  (states) =>
-                                                      Colors.green[400]!)),
+                                      style: registerButtonStyle(context),
                                       onPressed: () async =>
                                           validateAndSubmit(),
-                                      child: const Text(
-                                        'REGISTER',
-                                        style: TextStyle(fontSize: 20),
-                                      ),
+                                      child: const SignInButtonText(
+                                          text: 'Register'),
                                     ),
                                   ),
                                 ],
@@ -269,7 +265,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             NavigateToScreenTxtBtn(
                               onPressed: () => navigateToLoginScreen(context),
-                              text: 'Have an account? Login',
+                              text: 'Have an account?',
+                              clickableText: 'LOGIN',
                             ),
                           ],
                         ),
@@ -282,5 +279,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
             );
           }
         });
+  }
+
+  ButtonStyle registerButtonStyle(BuildContext context) {
+    return ButtonStyle(
+      elevation: MaterialStateProperty.resolveWith((states) => 1),
+      backgroundColor: MaterialStateColor.resolveWith(
+        (states) {
+          return Theme.of(context).colorScheme.onBackground;
+        },
+      ),
+      foregroundColor: MaterialStateColor.resolveWith(
+        (states) {
+          return Theme.of(context).colorScheme.background;
+        },
+      ),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+          //side: BorderSide(color: Colors.red),
+        ),
+      ),
+    );
   }
 }

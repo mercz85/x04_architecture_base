@@ -27,3 +27,34 @@ https://stackoverflow.com/questions/49307677/how-can-i-get-the-height-of-a-widge
 
 KEYs
 https://betterprogramming.pub/flutter-keys-the-why-when-and-how-to-go-about-them-85f12a5a0445
+
+STRUCTURE EXAMPLE BY CHATGPT
+
+lib/
+|-- common/
+|   |-- inherited_widgets/
+|   |   |-- my_inherited_widget.dart
+|-- features/
+|   |-- feature_a/
+|   |   |-- bloc/
+|   |   |-- views/
+|   |   |-- widgets/
+|   |-- feature_b/
+|   |   |-- bloc/
+|   |   |-- views/
+|   |   |-- widgets/
+|-- main.dart
+
+INHERITED WIDGETS
+https://dev.to/solnsumei/easy-state-management-with-valuenotifiers-and-inherited-widgets-in-flutter-1070
+
+STORE STATE IN INHERITED WIDGET
+https://stackoverflow.com/questions/49491860/flutter-how-to-correctly-use-an-inherited-widget
+
+COLOR SCHEME GENERATOR
+https://m3.material.io/theme-builder#/custom
+//https://api.flutter.dev/flutter/material/ColorScheme/ColorScheme.dark.html
+
+FLUTTER NATIVE SPLASHSCREEN
+To regenerate:
+dart run flutter_native_splash:create --path=flutter_native_splash.yaml

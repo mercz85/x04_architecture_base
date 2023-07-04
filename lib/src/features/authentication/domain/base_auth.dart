@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:x04_architecture_base/src/features/authentication/domain/auth_mode.dart';
-import 'package:x04_architecture_base/src/features/authentication/domain/auth_user.dart';
+import 'auth_user.dart';
 
 abstract class BaseAuth {
   //TODO realmente lo que queremos es que devuelva un usuario, no un String

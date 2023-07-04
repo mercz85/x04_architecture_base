@@ -19,8 +19,8 @@ class EmailTextFormField extends StatelessWidget {
     return TextFormField(
       key: key,
       decoration: const InputDecoration(
-        labelText: 'Enter your email',
-        icon: Icon(FontAwesomeIcons.envelope),
+        hintText: 'Enter your email.',
+        prefixIcon: Icon(FontAwesomeIcons.envelope),
       ),
       onSaved: onSaved,
       validator: (value) => EmailFieldValidator.validate(value!),
