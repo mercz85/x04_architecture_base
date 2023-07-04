@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../app.dart';
 
 class MyAppBase extends StatefulWidget {
@@ -73,12 +73,14 @@ class _MyAppBaseState extends State<MyAppBase> {
       Container(
         color: Colors.red,
         alignment: Alignment.center,
-        child: const Text('Page 1'),
+        child: Text(
+            AppLocalizations.of(context)!.helloWorld), //const Text('Page 1 '),
       ),
       Container(
         color: Colors.green,
         alignment: Alignment.center,
-        child: const Text('Page 2'),
+        child: Text(AppLocalizations.of(context)!
+            .hello('John')), // const Text('Page 2'),
       ),
       Container(
         color: Colors.blue,
