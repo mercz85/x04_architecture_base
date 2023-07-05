@@ -8,9 +8,11 @@ class ThemeInheritedWidget extends InheritedWidget {
     Key? key,
   }) : super(child: child, key: key);
 
+  //onThemeChanged is to trigger a rebuild with the new value
   final ValueChanged<bool> onThemeChanged;
   final bool isThemeDark;
 
+  //updateTheme to call onThemeChanged property
   void updateTheme(bool isDark) {
     onThemeChanged(isDark);
   }

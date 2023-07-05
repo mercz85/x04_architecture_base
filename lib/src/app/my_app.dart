@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
           return ThemeInheritedWidget(
             isThemeDark: isDark,
             onThemeChanged: (isDark) {
+              //Triggers the rebuild (StreamBuilder) with the new value
               bloc.onThemeChanged(isDark);
             },
             child: MaterialApp(
