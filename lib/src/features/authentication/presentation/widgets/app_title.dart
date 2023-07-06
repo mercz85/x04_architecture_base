@@ -35,7 +35,8 @@ class AppTitle extends StatelessWidget {
                 backgroundColor: Theme.of(context).colorScheme.background,
                 radius: iconSize / 2,
                 child: CircleAvatar(
-                  backgroundImage: const AssetImage('assets/images/sirena.png'),
+                  backgroundImage:
+                      const AssetImage('assets/images/gato_dibujo.png'),
                   radius: iconSize / 2,
                   backgroundColor: Colors.white.withOpacity(
                       0.9), //Theme.of(context).colorScheme.onBackground,
