@@ -1,6 +1,6 @@
 # x04_architecture_base
 
-A new Flutter project.
+Base project architecture. Feature driven desing + BLoC (without the BLoC package).
 
 ## Getting Started
 
